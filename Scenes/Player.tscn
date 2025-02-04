@@ -8,8 +8,10 @@ height = 1.71
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_xlns1")
+yaw_speed = 6.28319
+pitch_speed = 6.28319
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 current = true
 
