@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx66b34catyfg"]
+[gd_scene load_steps=7 format=3 uid="uid://cx66b34catyfg"]
 
 [ext_resource type="PackedScene" uid="uid://76xhglmbagnd" path="res://Scenes/Player.tscn" id="1_5t82q"]
+[ext_resource type="PackedScene" uid="uid://cwpe4mfxb1yxr" path="res://Scenes/Beaker.tscn" id="2_lpqci"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_uctcy"]
 
@@ -14,7 +15,7 @@ size = Vector3(50, 0.1, 50)
 [node name="root" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5t82q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94543, -6.34323)
@@ -81,3 +82,6 @@ shape = SubResource("BoxShape3D_cl07q")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Wall4"]
 transform = Transform3D(50, 0, 0, 0, 0.1, 0, 0, 0, 50, 0, 0, 0)
 mesh = SubResource("BoxMesh_1413i")
+
+[node name="Beaker" parent="." instance=ExtResource("2_lpqci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.343211, 1.02087, -3.54133)
