@@ -30,7 +30,6 @@ transform = Transform3D(1, 0, 0, 0, 0.189267, 0.981926, 0, -0.981926, 0.189267, 
 physics_material_override = SubResource("PhysicsMaterial_k07yi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.397461, 0.0212402)
 shape = SubResource("BoxShape3D_cl07q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor"]
