@@ -60,6 +60,16 @@ func update_orientation(delta: float) -> void:
 		camera_euler.x = clamp(camera_euler.x, deg_to_rad(-75), deg_to_rad(75))
 		$Camera.transform.basis = Basis.from_euler(camera_euler)
 
+func resolve_collisions():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider();
+		if collider is RigidBody3D:
+			var rigidBody = collider as RigidBody3D
+			var targetMass = rigidBody.mass
+			var impulse: Vector3 = (-collision.get_normal() * velocity.length()) / targetMass;
+			rigidBody.apply_impulse(impulse);
+			
 func _physics_process(delta: float) -> void:
 	var on_floor : bool = is_on_floor()
 	
@@ -67,3 +77,5 @@ func _physics_process(delta: float) -> void:
 	update_orientation(delta)
 
 	move_and_slide()
+	
+	resolve_collisions()

@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwpe4mfxb1yxr"]
+[gd_scene load_steps=4 format=3 uid="uid://cwpe4mfxb1yxr"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxhbgx57cgcly" path="res://Objs/beaker.obj" id="1_rw7tk"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7tmit"]
-size = Vector3(0.667969, 1.04248, 0.664703)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nf835"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m5y5i"]
+points = PackedVector3Array(-1, -1, 0, -0.712999, -1, -0.712999, -0.712999, -1, 0.712803, -0.332811, 2.24275, 0, 0, -1, -1, -0.216132, 2.24275, -0.216132, 0, 2.24275, -0.332811, 0, -1, 1, 0, 2.24275, 0.332615, -0.216132, 2.24275, 0.215936, 0.712803, -1, -0.712999, 0.215936, 2.24275, -0.216132, 0.712803, -1, 0.712803, 0.215936, 2.24275, 0.215936, 1, -1, 0, 0.332615, 2.24275, 0)
 
 [node name="Beaker" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_nf835")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = ExtResource("1_rw7tk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117188, 0.173828, 0.0232086)
-shape = SubResource("BoxShape3D_7tmit")
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_m5y5i")
