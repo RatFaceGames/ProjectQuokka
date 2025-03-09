@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var top_speed : float = 5
 @export var jump_velocity : float = 4.5
+@export var interact_probe_range : float = 1000
 
 @export_range(0, 100, 1, "or_less", "or_greater", "radians_as_degrees") var yaw_speed = 7.5
 @export_range(0, 100, 1, "or_less", "or_greater", "radians_as_degrees") var pitch_speed = 7.5
@@ -69,7 +70,21 @@ func resolve_collisions():
 			var targetMass = rigidBody.mass
 			var impulse: Vector3 = (-collision.get_normal() * velocity.length()) / targetMass;
 			rigidBody.apply_impulse(impulse);
-			
+
+func try_interact():
+	var space_state : PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+
+	var ray_start : Vector3 = $Camera.global_transform.origin
+	var ray_dir : Vector3 = $Camera.global_transform.basis.z;
+	var ray_end : Vector3 = ray_start + (ray_dir * interact_probe_range)
+
+
+	# use global coordinates, not local to node
+	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
+	var result = space_state.intersect_ray(query)
+
+	print("raycast res" + str(result));
+
 func _physics_process(delta: float) -> void:
 	var on_floor : bool = is_on_floor()
 	
@@ -79,3 +94,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	resolve_collisions()
+	
+	if Input.is_action_just_released("Interact"):
+		try_interact()
