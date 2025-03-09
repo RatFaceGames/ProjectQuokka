@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwpe4mfxb1yxr"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxhbgx57cgcly" path="res://Objs/beaker.obj" id="1_rw7tk"]
-[ext_resource type="Script" path="res://Scripts/interact_label.gd" id="2_m6j5a"]
+[ext_resource type="PackedScene" uid="uid://ltu3adag47kv" path="res://Scenes/Components/Interactable.tscn" id="2_mdkmx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nf835"]
 
@@ -19,9 +19,9 @@ mesh = ExtResource("1_rw7tk")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_m5y5i")
 
-[node name="Interactable" type="Node3D" parent="."]
+[node name="InteractablePivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182189, 0)
 
-[node name="InteractLabel" type="Label3D" parent="Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275136, 0.344527)
-text = "[E]"
-script = ExtResource("2_m6j5a")
+[node name="Interactable" parent="InteractablePivot" instance=ExtResource("2_mdkmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.241995)
+billboard = 1
