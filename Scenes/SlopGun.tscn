@@ -8,6 +8,8 @@ transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
 mesh = ExtResource("1_bnkoe")
 skeleton = NodePath("")
 script = ExtResource("1_r6ox7")
+horizontal_spread_cone = 0.174533
+vertical_spread_cone = 0.174533
 
 [node name="SlopEmitter" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1964)
