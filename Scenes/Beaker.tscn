@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwpe4mfxb1yxr"]
+[gd_scene load_steps=5 format=3 uid="uid://cwpe4mfxb1yxr"]
 
 [ext_resource type="PackedScene" uid="uid://cneyhv1vwsi67" path="res://Scenes/Components/Interactable.tscn" id="2_mdkmx"]
 [ext_resource type="Script" uid="uid://b7o7dwjws6jma" path="res://Scripts/pickup.gd" id="3_wha7c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nf835"]
-
-[sub_resource type="Resource" id="Resource_m6oqo"]
-metadata/__load_path__ = "res://Objs/beaker.obj"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m5y5i"]
 points = PackedVector3Array(-1, -1, 0, -0.712999, -1, -0.712999, -0.712999, -1, 0.712803, -0.332811, 2.24275, 0, 0, -1, -1, -0.216132, 2.24275, -0.216132, 0, 2.24275, -0.332811, 0, -1, 1, 0, 2.24275, 0.332615, -0.216132, 2.24275, 0.215936, 0.712803, -1, -0.712999, 0.215936, 2.24275, -0.216132, 0.712803, -1, 0.712803, 0.215936, 2.24275, 0.215936, 1, -1, 0, 0.332615, 2.24275, 0)
@@ -16,7 +13,6 @@ physics_material_override = SubResource("PhysicsMaterial_nf835")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("Resource_m6oqo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

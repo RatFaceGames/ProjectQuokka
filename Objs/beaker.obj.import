@@ -4,11 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://cxhbgx57cgcly"
-valid=false
+path="res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh"
 
 [deps]
 
+files=["res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh"]
+
 source_file="res://Objs/beaker.obj"
+dest_files=["res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh", "res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh"]
 
 [params]
 

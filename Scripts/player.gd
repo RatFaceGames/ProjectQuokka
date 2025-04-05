@@ -9,6 +9,8 @@ extends CharacterBody3D
 
 @export var acceleration : float = 20
 @export var deceleration : float = 60
+@export var slop_gun_path : NodePath;
+@onready var slop_gun_node : SlopGun = get_node(slop_gun_path)
 
 func calculate_ground_velocity(delta: float) -> Vector3:
 	var ground_velocity = velocity * Vector3(1,0,1)
@@ -85,6 +87,10 @@ func try_interact():
 
 	print("raycast res" + str(result));
 
+func fire_slop():
+	print("glorp")
+	pass
+
 func _physics_process(delta: float) -> void:
 	var on_floor : bool = is_on_floor()
 	
@@ -97,3 +103,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_released("Interact"):
 		try_interact()
+		
+	if Input.is_action_pressed("Shoot"):
+		slop_gun_node.fire(delta)

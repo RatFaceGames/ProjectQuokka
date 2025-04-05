@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://76xhglmbagnd"]
+[gd_scene load_steps=4 format=3 uid="uid://76xhglmbagnd"]
 
 [ext_resource type="Script" uid="uid://ceaky52uvolgo" path="res://Scripts/player.gd" id="1_xlns1"]
+[ext_resource type="PackedScene" uid="uid://cibob35qwbvmx" path="res://Scenes/SlopGun.tscn" id="2_kyqiw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wrujp"]
 radius = 0.35
@@ -10,10 +11,14 @@ height = 1.71
 script = ExtResource("1_xlns1")
 yaw_speed = 6.28319
 pitch_speed = 6.28319
+slop_gun_path = NodePath("Camera/SlopGun")
 
 [node name="Camera" type="Camera3D" parent="." groups=["Camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 current = true
+
+[node name="SlopGun" parent="Camera" instance=ExtResource("2_kyqiw")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0.25357, -0.22893, -0.510306)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0250014, 0.822031, 0.02554)
