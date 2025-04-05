@@ -4,19 +4,19 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://cxhbgx57cgcly"
-path="res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh"
+valid=false
 
 [deps]
 
-files=["res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh"]
-
 source_file="res://Objs/beaker.obj"
-dest_files=["res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh", "res://.godot/imported/beaker.obj-ae1a1dfb27376e8d6fa1e765e1cafcd8.mesh"]
 
 [params]
 
 generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
 scale_mesh=Vector3(1, 1, 1)
 offset_mesh=Vector3(0, 0, 0)
-optimize_mesh=true
 force_disable_mesh_compression=false
