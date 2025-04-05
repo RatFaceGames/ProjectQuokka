@@ -9,8 +9,13 @@ height = 1.71
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_xlns1")
+top_speed = null
+jump_velocity = null
+interact_probe_range = null
 yaw_speed = 6.28319
 pitch_speed = 6.28319
+acceleration = null
+deceleration = null
 slop_gun_path = NodePath("Camera/SlopGun")
 
 [node name="Camera" type="Camera3D" parent="." groups=["Camera"]]
