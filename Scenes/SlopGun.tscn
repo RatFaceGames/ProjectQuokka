@@ -10,3 +10,4 @@ skeleton = NodePath("")
 script = ExtResource("1_r6ox7")
 
 [node name="SlopEmitter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1964)
