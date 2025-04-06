@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://xvc0eap0yirt"]
+
+[ext_resource type="Script" uid="uid://bibek86q2wpvw" path="res://Scenes/Components/slop_detector.gd" id="1_iyer3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_br1lm"]
+
+[node name="SlopDetector" type="Area3D"]
+script = ExtResource("1_iyer3")
+
+[node name="CollisionDetector" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_br1lm")
+
+[connection signal="body_entered" from="." to="." method="slop_entered"]
