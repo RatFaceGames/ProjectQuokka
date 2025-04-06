@@ -3,6 +3,15 @@
 [ext_resource type="ArrayMesh" uid="uid://dlc2y5eahm382" path="res://Objs/slopgun.obj" id="1_bnkoe"]
 [ext_resource type="Script" uid="uid://cue8xwhdp856f" path="res://Scripts/SlopGun.gd" id="1_r6ox7"]
 
+[sub_resource type="Animation" id="Animation_43vu0"]
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, -1, 0, 1)
+
 [sub_resource type="Animation" id="Animation_bnkoe"]
 resource_name = "SlopGunPushback"
 tracks/0/type = "position_3d"
@@ -11,17 +20,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.133333, 1, 0, 0, 0, 1, 1, -0.125, 0, 0.125)
-
-[sub_resource type="Animation" id="Animation_43vu0"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, -0.25, 0, 0.125)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5tcfs"]
 _data = {

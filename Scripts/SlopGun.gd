@@ -1,17 +1,25 @@
 class_name SlopGun
 extends Node3D
 
-var chunk_prefab : PackedScene = preload("uid://0itkq5xr37bp") #SlopCunk.tcsn 
-
 @export var slop_exit_speed : float = 75.0
 @export_range(0, 90, 0.001, "radians_as_degrees") var horizontal_spread_cone : float
 @export_range(0, 90, 0.001, "radians_as_degrees") var vertical_spread_cone : float
 
-func fire(deltaTime: float, strength: float):
-	var chunk : SlopChunk = chunk_prefab.instantiate();
-	get_tree().root.add_child(chunk);
-	
-	$RecoilSlidePlayer.seek(strength, true)
+var chunk_prefab : PackedScene = preload("uid://0itkq5xr37bp") #SlopCunk.tcsn 
+
+func _ready() -> void:
+	# Setup recoil animation, driven by damped_trigger_strength
+	$RecoilSlidePlayer.play("SlopGunPushback")
+	$RecoilSlidePlayer.speed_scale = 0
+
+func _physics_process(delta: float) -> void:
+	#todo - spring damping on trigger strength
+	var trigger_strength : float = Input.get_action_strength("Shoot")
+	$RecoilSlidePlayer.seek(trigger_strength, true)
+
+func fire(deltaTime: float) -> void:
+	var chunk : SlopChunk = chunk_prefab.instantiate()
+	get_tree().root.add_child(chunk)
 	var horizontal_angle = (randf() * horizontal_spread_cone * 2) - horizontal_spread_cone
 	var vertical_angle = (randf() * vertical_spread_cone * 2) - vertical_spread_cone
 	

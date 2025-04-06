@@ -87,10 +87,6 @@ func try_interact():
 
 	print("raycast res" + str(result));
 
-func fire_slop():
-	print("glorp")
-	pass
-
 func _physics_process(delta: float) -> void:
 	var on_floor : bool = is_on_floor()
 	
@@ -104,6 +100,5 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("Interact"):
 		try_interact()
 		
-	var strength = Input.get_action_strength("Shoot")
 	if Input.is_action_pressed("Shoot"):
-		slop_gun_node.fire(delta, strength)
+		slop_gun_node.fire(delta)
