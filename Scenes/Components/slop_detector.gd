@@ -10,4 +10,5 @@ func get_slop_inside() -> Array[Node3D]:
 	return get_overlapping_bodies().filter(is_slop)
 
 func slop_entered(body : Node3D):
-	emit_signal("slop_touched")
+	if body is SlopChunk:
+		emit_signal("slop_touched", body)
