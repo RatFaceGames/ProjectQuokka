@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b82suqwlrayum"]
+[gd_scene load_steps=3 format=3 uid="uid://bb3kgxe8wcajj"]
 
 [ext_resource type="PackedScene" uid="uid://ccb8q0w6qfjav" path="res://Objs/slopgun.glb" id="1_w7ip6"]
 [ext_resource type="Script" uid="uid://cue8xwhdp856f" path="res://Scripts/SlopGun.gd" id="2_ef3s2"]

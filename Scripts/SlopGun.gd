@@ -1,6 +1,7 @@
 class_name SlopGun
 extends Node3D
 
+@export var slop_curve : Curve
 @export var slop_per_second : float = 120
 @export var slop_exit_speed : float = 75.0
 @export_range(0, 90, 0.001, "radians_as_degrees") var horizontal_spread_cone : float
@@ -16,19 +17,21 @@ func _ready() -> void:
 	$slopgun/AnimationPlayer.play("HandleAction_003")
 	$slopgun/AnimationPlayer.speed_scale = 0
 
-func fire(deltaTime: float, strength : float) -> void:
-	$RecoilSlidePlayer.seek(strength, true)
-	$slopgun/AnimationPlayer.seek(strength, true)
+func fire(deltaTime: float, trigger_strength : float) -> void:
+	$RecoilSlidePlayer.seek(trigger_strength, true)
+	$slopgun/AnimationPlayer.seek(trigger_strength, true)
+	
+	var strength = slop_curve.sample(trigger_strength)
 	
 	var numToSpawn : float = slop_per_second * deltaTime * strength
 	leftover_slop = leftover_slop + numToSpawn - int(numToSpawn)
+	
 	
 	var finalNumToSpawn = int(numToSpawn)
 	while leftover_slop >= 1.0:
 		finalNumToSpawn = finalNumToSpawn + 1
 		leftover_slop = leftover_slop - 1
 	
-	print(finalNumToSpawn)
 	for i in range( finalNumToSpawn ):
 		var chunk : SlopChunk = chunk_prefab.instantiate()
 		get_tree().root.add_child(chunk)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cibob35qwbvmx"]
+[gd_scene load_steps=7 format=3 uid="uid://cibob35qwbvmx"]
 
 [ext_resource type="Script" uid="uid://cue8xwhdp856f" path="res://Scripts/SlopGun.gd" id="1_r6ox7"]
+[ext_resource type="Curve" uid="uid://b3cds40o5rwb4" path="res://Curves/SlopSpewCurve.tres" id="2_43vu0"]
 [ext_resource type="PackedScene" uid="uid://ccb8q0w6qfjav" path="res://Objs/slopgun.glb" id="2_bnkoe"]
 
 [sub_resource type="Animation" id="Animation_bnkoe"]
@@ -31,6 +32,7 @@ _data = {
 
 [node name="SlopGunRoot" type="Node3D"]
 script = ExtResource("1_r6ox7")
+slop_curve = ExtResource("2_43vu0")
 horizontal_spread_cone = 0.174533
 vertical_spread_cone = 0.174533
 
