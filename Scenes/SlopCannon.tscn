@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b82suqwlrayum"]
+
+[ext_resource type="PackedScene" uid="uid://ccb8q0w6qfjav" path="res://Objs/slopgun.glb" id="1_w7ip6"]
+[ext_resource type="Script" uid="uid://cue8xwhdp856f" path="res://Scripts/SlopGun.gd" id="2_ef3s2"]
+
+[node name="SlopCannon" instance=ExtResource("1_w7ip6")]
+script = ExtResource("2_ef3s2")
+horizontal_spread_cone = 0.174533
+vertical_spread_cone = 0.174533
+
+[node name="Handle" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -0.0054788, 1.20026, -0.265518)
+
+[node name="SlopEmitter" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1964)

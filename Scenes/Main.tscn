@@ -20,11 +20,6 @@ size = Vector3(50, 0.1, 50)
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_5t82q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-top_speed = 5.0
-jump_velocity = 4.5
-interact_probe_range = 1000.0
-acceleration = 20.0
-deceleration = 60.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94543, -6.34323)
