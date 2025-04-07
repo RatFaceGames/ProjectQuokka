@@ -1,7 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cibob35qwbvmx"]
+[gd_scene load_steps=6 format=3 uid="uid://cibob35qwbvmx"]
 
 [ext_resource type="Script" uid="uid://cue8xwhdp856f" path="res://Scripts/SlopGun.gd" id="1_r6ox7"]
 [ext_resource type="PackedScene" uid="uid://ccb8q0w6qfjav" path="res://Objs/slopgun.glb" id="2_bnkoe"]
+
+[sub_resource type="Animation" id="Animation_bnkoe"]
+resource_name = "RecoilSlide"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slopgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, -0.25, 0, 0.35)
+
+[sub_resource type="Animation" id="Animation_43vu0"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slopgun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5tcfs"]
+_data = {
+&"RESET": SubResource("Animation_43vu0"),
+&"RecoilSlide": SubResource("Animation_bnkoe")
+}
 
 [node name="SlopGunRoot" type="Node3D"]
 script = ExtResource("1_r6ox7")
@@ -12,3 +38,8 @@ vertical_spread_cone = 0.174533
 
 [node name="SlopEmitter" type="Node3D" parent="slopgun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1964)
+
+[node name="RecoilSlidePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5tcfs")
+}

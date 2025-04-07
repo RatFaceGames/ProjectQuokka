@@ -54,7 +54,7 @@ func update_orientation(delta: float) -> void:
 		var delta_yaw : float = -input_dir.x * yaw_speed * delta;
 		var player_euler : Vector3 = transform.basis.get_euler(EULER_ORDER_XYZ)
 		player_euler.y += delta_yaw
-		transform.basis = transform.basis.from_euler(player_euler, EULER_ORDER_XYZ)
+		transform.basis = Basis.from_euler(player_euler, EULER_ORDER_XYZ)
 		
 		var camera_euler : Vector3 = $Camera.transform.basis.get_euler(EULER_ORDER_XYZ)
 		var delta_pitch : float = input_dir.y * pitch_speed * delta;
