@@ -36,6 +36,9 @@ vertical_spread_cone = 0.174533
 
 [node name="slopgun" parent="." instance=ExtResource("2_bnkoe")]
 
+[node name="Handle" parent="slopgun" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -0.0054788, 1.20026, -0.265518)
+
 [node name="SlopEmitter" type="Node3D" parent="slopgun"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1964)
 
@@ -43,3 +46,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.1964)
 libraries = {
 &"": SubResource("AnimationLibrary_5tcfs")
 }
+
+[editable path="slopgun"]

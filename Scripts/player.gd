@@ -80,7 +80,6 @@ func try_interact():
 	var ray_dir : Vector3 = $Camera.global_transform.basis.z;
 	var ray_end : Vector3 = ray_start + (ray_dir * interact_probe_range)
 
-
 	# use global coordinates, not local to node
 	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
 	var result = space_state.intersect_ray(query)
@@ -99,6 +98,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_released("Interact"):
 		try_interact()
-		
-	if Input.is_action_pressed("Shoot"):
-		slop_gun_node.fire(delta)
+	
+	var strength = Input.get_action_strength("Shoot")
+	if strength:
+		slop_gun_node.fire(delta, strength)
