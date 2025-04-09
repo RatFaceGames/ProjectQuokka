@@ -11,13 +11,15 @@ height = 1.71
 script = ExtResource("1_xlns1")
 yaw_speed = 6.28319
 pitch_speed = 6.28319
-slop_gun_path = NodePath("Camera/SlopGun")
+slop_gun_path = NodePath("CameraRoot/Camera/SlopGun")
 
-[node name="Camera" type="Camera3D" parent="." groups=["Camera"]]
+[node name="CameraRoot" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CameraRoot" groups=["Camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 current = true
 
-[node name="SlopGun" parent="Camera" instance=ExtResource("2_kyqiw")]
+[node name="SlopGun" parent="CameraRoot/Camera" instance=ExtResource("2_kyqiw")]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0.25357, -0.22893, -0.510306)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

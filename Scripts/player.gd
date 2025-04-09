@@ -12,6 +12,9 @@ extends CharacterBody3D
 @export var slop_gun_path : NodePath;
 @onready var slop_gun_node : SlopGun = get_node(slop_gun_path)
 
+# https://www.youtube.com/watch?v=tu-Qe66AvtY
+var trauma : float = 0
+
 func calculate_ground_velocity(delta: float) -> Vector3:
 	var ground_velocity = velocity * Vector3(1,0,1)
 	
@@ -56,12 +59,12 @@ func update_orientation(delta: float) -> void:
 		player_euler.y += delta_yaw
 		transform.basis = Basis.from_euler(player_euler, EULER_ORDER_XYZ)
 		
-		var camera_euler : Vector3 = $Camera.transform.basis.get_euler(EULER_ORDER_XYZ)
+		var camera_euler : Vector3 = $CameraRoot.transform.basis.get_euler(EULER_ORDER_XYZ)
 		var delta_pitch : float = input_dir.y * pitch_speed * delta;
 		
 		camera_euler.x += delta_pitch;
 		camera_euler.x = clamp(camera_euler.x, deg_to_rad(-75), deg_to_rad(75))
-		$Camera.transform.basis = Basis.from_euler(camera_euler)
+		$CameraRoot.transform.basis = Basis.from_euler(camera_euler)
 
 func resolve_collisions():
 	for i in get_slide_collision_count():
@@ -102,3 +105,16 @@ func _physics_process(delta: float) -> void:
 	var strength = Input.get_action_strength("Shoot")
 	if strength:
 		slop_gun_node.fire(delta, strength)
+		
+func _process(delta: float) -> void:
+	var rng = RandomNumberGenerator.new()
+	
+	trauma = Input.get_action_strength("Shoot")
+	var traumaCube = trauma * trauma * trauma 
+	var pitch = traumaCube * rng.randf_range(deg_to_rad(-10.0), deg_to_rad(10.0))
+	var yaw = traumaCube * rng.randf_range(deg_to_rad(-10.0), deg_to_rad(10.0))
+	var roll = traumaCube * rng.randf_range(deg_to_rad(-10.0), deg_to_rad(10.0))
+	
+	$CameraRoot/Camera.transform.basis = Basis.from_euler(Vector3(pitch, yaw, roll))
+	
+	

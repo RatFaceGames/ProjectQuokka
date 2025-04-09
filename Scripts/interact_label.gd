@@ -4,7 +4,7 @@ extends Label3D
 @export var interact_behavior : GDScript
 
 @onready var player_node : Node3D = get_tree().get_nodes_in_group("Player")[0]   
-@onready var camera_node = player_node.get_node("Camera")
+@onready var camera_node : Node3D = get_tree().get_nodes_in_group("Camera")[0]
 
 var label_pivot : Node3D
 
