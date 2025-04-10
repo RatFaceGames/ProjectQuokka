@@ -1,19 +1,25 @@
 extends CharacterBody3D
 
+
+# Controls
 @export var top_speed : float = 5
+@export var acceleration : float = 20
+@export var deceleration : float = 60
+@export_range(0, 100, 1, "or_less", "or_greater", "radians_as_degrees") var yaw_speed = 7.5
+@export_range(0, 100, 1, "or_less", "or_greater", "radians_as_degrees") var pitch_speed = 7.5
 @export var jump_velocity : float = 4.5
 @export var interact_probe_range : float = 1000
 
-@export_range(0, 100, 1, "or_less", "or_greater", "radians_as_degrees") var yaw_speed = 7.5
-@export_range(0, 100, 1, "or_less", "or_greater", "radians_as_degrees") var pitch_speed = 7.5
-
-@export var acceleration : float = 20
-@export var deceleration : float = 60
-@export var slop_gun_path : NodePath;
+@export var slop_gun_path : NodePath
 @onready var slop_gun_node : SlopGun = get_node(slop_gun_path)
+
+@export var camera_recoil_noise : FastNoiseLite
+@export var gun_recoil_noise : FastNoiseLite
+
 
 # https://www.youtube.com/watch?v=tu-Qe66AvtY
 var trauma : float = 0
+var recoil_timer : float = 0
 
 func calculate_ground_velocity(delta: float) -> Vector3:
 	var ground_velocity = velocity * Vector3(1,0,1)
@@ -105,16 +111,33 @@ func _physics_process(delta: float) -> void:
 	var strength = Input.get_action_strength("Shoot")
 	if strength:
 		slop_gun_node.fire(delta, strength)
-		
+
+func shake_camera(traumaCube: float, recoil_timer: float) -> void:
+	var pitch = traumaCube * camera_recoil_noise.get_noise_3d(recoil_timer, 0, 0)
+	var yaw = traumaCube * camera_recoil_noise.get_noise_3d(0, recoil_timer, 0)
+	var roll = traumaCube * camera_recoil_noise.get_noise_3d(0, 0, recoil_timer)
+	$CameraRoot/Camera.transform.basis = Basis.from_euler(Vector3(pitch, yaw, roll))
+
+func shake_gun(traumaCube: float, recoil_timer: float) -> void:
+	var pitch = traumaCube * camera_recoil_noise.get_noise_3d(recoil_timer, 0, 0)
+	var yaw = traumaCube * camera_recoil_noise.get_noise_3d(0, recoil_timer, 0)
+	var roll = traumaCube * camera_recoil_noise.get_noise_3d(0, 0, recoil_timer)
+	var gun_scale : Vector3 = $CameraRoot/SlopGun.scale
+	
+	#var gun_pos = $CameraRoot/SlopGun.transform.origin
+	$CameraRoot/SlopGun.transform.basis = Basis.from_euler(Vector3(pitch, yaw, roll))
+	$CameraRoot/SlopGun.scale = gun_scale
+
+
 func _process(delta: float) -> void:
-	var rng = RandomNumberGenerator.new()
+	if Input.get_action_strength("Shoot") == 0:
+		recoil_timer = 0
+		return
+	
+	recoil_timer = recoil_timer + delta
 	
 	trauma = Input.get_action_strength("Shoot")
-	var traumaCube = trauma * trauma * trauma 
-	var pitch = traumaCube * rng.randf_range(deg_to_rad(-10.0), deg_to_rad(10.0))
-	var yaw = traumaCube * rng.randf_range(deg_to_rad(-10.0), deg_to_rad(10.0))
-	var roll = traumaCube * rng.randf_range(deg_to_rad(-10.0), deg_to_rad(10.0))
+	var traumaCube = trauma * trauma * trauma
 	
-	$CameraRoot/Camera.transform.basis = Basis.from_euler(Vector3(pitch, yaw, roll))
-	
-	
+	shake_camera(traumaCube, recoil_timer)
+	shake_gun(traumaCube, recoil_timer)

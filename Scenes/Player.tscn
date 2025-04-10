@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://76xhglmbagnd"]
+[gd_scene load_steps=6 format=3 uid="uid://76xhglmbagnd"]
 
 [ext_resource type="Script" uid="uid://ceaky52uvolgo" path="res://Scripts/player.gd" id="1_xlns1"]
+[ext_resource type="FastNoiseLite" uid="uid://b06yqswom2yfe" path="res://Resources/Noise/CameraJitterNoise.tres" id="2_gntrk"]
 [ext_resource type="PackedScene" uid="uid://cibob35qwbvmx" path="res://Scenes/SlopGun.tscn" id="2_kyqiw"]
+[ext_resource type="FastNoiseLite" uid="uid://t6bngiwsbttf" path="res://Resources/Noise/RecoilJitter.tres" id="3_dewec"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wrujp"]
 radius = 0.35
@@ -11,7 +13,9 @@ height = 1.71
 script = ExtResource("1_xlns1")
 yaw_speed = 6.28319
 pitch_speed = 6.28319
-slop_gun_path = NodePath("CameraRoot/Camera/SlopGun")
+slop_gun_path = NodePath("CameraRoot/SlopGun")
+camera_recoil_noise = ExtResource("2_gntrk")
+gun_recoil_noise = ExtResource("3_dewec")
 
 [node name="CameraRoot" type="Node3D" parent="."]
 
@@ -19,8 +23,8 @@ slop_gun_path = NodePath("CameraRoot/Camera/SlopGun")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 current = true
 
-[node name="SlopGun" parent="CameraRoot/Camera" instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0.25357, -0.22893, -0.510306)
+[node name="SlopGun" parent="CameraRoot" instance=ExtResource("2_kyqiw")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0.25357, 0.77107, -0.510306)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0250014, 0.822031, 0.02554)

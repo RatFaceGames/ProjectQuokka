@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cibob35qwbvmx"]
 
 [ext_resource type="Script" uid="uid://cue8xwhdp856f" path="res://Scripts/SlopGun.gd" id="1_r6ox7"]
-[ext_resource type="Curve" uid="uid://b3cds40o5rwb4" path="res://Curves/SlopSpewCurve.tres" id="2_43vu0"]
+[ext_resource type="Curve" uid="uid://b3cds40o5rwb4" path="res://Resources/Curves/SlopSpewCurve.tres" id="2_43vu0"]
 [ext_resource type="PackedScene" uid="uid://ccb8q0w6qfjav" path="res://Objs/slopgun.glb" id="2_bnkoe"]
 
 [sub_resource type="Animation" id="Animation_43vu0"]
