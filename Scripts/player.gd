@@ -139,5 +139,5 @@ func _process(delta: float) -> void:
 	trauma = Input.get_action_strength("Shoot")
 	var traumaCube = trauma * trauma * trauma
 	
-	shake_camera(traumaCube, recoil_timer)
-	shake_gun(traumaCube, recoil_timer)
+	shake_camera(traumaCube * 0.25, recoil_timer)
+	shake_gun(traumaCube * 0.5, recoil_timer)
