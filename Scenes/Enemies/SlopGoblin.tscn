@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmvldyv13pubt"]
+
+[ext_resource type="Material" uid="uid://o318kjybjlh6" path="res://Scenes/Enemies/slopgoblin.tres" id="1_0ji08"]
+[ext_resource type="Script" uid="uid://bwbn6635o6m8a" path="res://Scenes/Enemies/SlopGoblin.gd" id="1_rxrjp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rxrjp"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4cj5e"]
+material = ExtResource("1_0ji08")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xncm3"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_rxrjp"]
+
+[node name="root" type="Node3D"]
+script = ExtResource("1_rxrjp")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_rxrjp")
+
+[node name="Head" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0172706, 0)
+mesh = SubResource("SphereMesh_4cj5e")
+skeleton = NodePath("../..")
+
+[node name="Eye" type="MeshInstance3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.123297, 0.341189, -0.380153)
+mesh = SubResource("SphereMesh_xncm3")
+
+[node name="Eye2" type="MeshInstance3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.156961, 0.341189, -0.380153)
+mesh = SubResource("SphereMesh_xncm3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Head"]
+transform = Transform3D(0.1, 0, 0, 0, -0.0135456, -0.0990783, 0, 0.0990783, -0.0135456, 0, 0.0834808, -0.481285)
+mesh = SubResource("TorusMesh_rxrjp")

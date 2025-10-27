@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx66b34catyfg"]
+[gd_scene load_steps=11 format=3 uid="uid://cx66b34catyfg"]
 
 [ext_resource type="PackedScene" uid="uid://76xhglmbagnd" path="res://Scenes/Player.tscn" id="1_5t82q"]
 [ext_resource type="PackedScene" uid="uid://cwpe4mfxb1yxr" path="res://Scenes/Beaker.tscn" id="2_lpqci"]
 [ext_resource type="PackedScene" uid="uid://xvc0eap0yirt" path="res://Scenes/Components/SlopDetector.tscn" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://d2e03ub6xvc6p" path="res://Scenes/slop_printer.gd" id="4_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://dmvldyv13pubt" path="res://Scenes/Enemies/SlopGoblin.tscn" id="5_pbw6q"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_uctcy"]
 
@@ -97,5 +98,8 @@ mesh = SubResource("BoxMesh_rgh2o")
 
 [node name="SlopPrinter" type="Node3D" parent="."]
 script = ExtResource("4_rgh2o")
+
+[node name="root" parent="." instance=ExtResource("5_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46477, 0.0500007, -6.81016)
 
 [connection signal="slop_touched" from="SlopDetector" to="SlopPrinter" method="on_slop_touch"]
